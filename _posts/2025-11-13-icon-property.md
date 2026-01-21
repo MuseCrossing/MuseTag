@@ -3,13 +3,15 @@ layout: post
 title: "Meet .Icon: Visual Identity for Your Entities"
 date: 2025-11-13 13:53:27 +0100
 categories: features
-tags: [modifier, icon, visualization, annotation]
+tags: [property, icon, visualization, annotation]
 author: MuseTag Team
+redirect_from:
+  - /2025/11/13/icon-modifier/
 ---
 
 tl;dr
 =====
-`.Icon` is a new standard MuseTag modifier that lets you attach a small visual emblem to an entity. It accepts either an image URL (preferred: SVG/PNG) or up to three UTF characters (emoji/glyphs). Icons are metadata for GUI tools—normally invisible in the rendered text. If no icon is available, tools should fall back to the entity's initials; the icon background should pick up the entity's `.Color` when set (or a deterministic/random color otherwise).
+`.Icon` is a new standard MuseTag property that lets you attach a small visual emblem to an entity. It accepts either an image URL (preferred: SVG/PNG) or up to three UTF characters (emoji/glyphs). Icons are metadata for GUI tools—normally invisible in the rendered text. If no icon is available, tools should fall back to the entity's initials; the icon background should pick up the entity's `.Color` when set (or a deterministic/random color otherwise).
 
 Why this matters
 ----------------
@@ -17,7 +19,7 @@ When working on long projects, visual cues speed up cognition. A consistent icon
 
 Quick concept
 -------------
-- Modifier name: `.Icon`
+- Property name: `.Icon`
 - Scope: global (persistent visual attribute)
 - Parameter: single, normally invisible, either
   - a URL to an image file (relative or absolute), or
@@ -25,21 +27,22 @@ Quick concept
 - No visible label/alt provided by MuseTag (tools decide accessibility handling)
 - Fallback: entity initials
 - Background color: use `.Color` when present; otherwise deterministic or random
+- No visible label/alt provided by MuseTag (tools decide accessibility handling)
 
 Examples
 --------
 Image URL:
-```musetag.github.io/_posts/2025-11-13-icon-modifier.md#L1-6
+```musetag.github.io/_posts/2025-11-13-icon-property.md#L1-6
 @@Holmes.Icon(icons/magnifier.svg)
 ```
 
 Emoji / UTF glyph:
-```musetag.github.io/_posts/2025-11-13-icon-modifier.md#L1-6
+```musetag.github.io/_posts/2025-11-13-icon-property.md#L1-6
 @@Watson.Icon(🦸)
 ```
 
 Group convenience:
-```musetag.github.io/_posts/2025-11-13-icon-modifier.md#L1-6
+```musetag.github.io/_posts/2025-11-13-icon-property.md#L1-6
 @@(Holmes,Watson).Icon(icons/duo.png)
 ```
 

@@ -7,11 +7,11 @@ tags: [demo, color, visualization, features]
 author: MuseTag Team
 ---
 
-Following our recent updates for Dialogues and Aliases, we're excited to announce that the [MuseTag interactive demo](/30-demo.html) now fully supports the `.Color` modifier!
+Following our recent updates for Dialogues and Aliases, we're excited to announce that the [MuseTag interactive demo](/30-demo.html) now fully supports the `.Color` property!
 
 ## 🎨 Bringing Entities to Life
 
-The `.Color` modifier allows you to assign a specific display color to your entities. This is more than just a cosmetic tweak—it's a powerful tool for visual organization.
+The `.Color` property allows you to assign a specific display color to your entities. This is more than just a cosmetic tweak—it's a powerful tool for visual organization.
 
 In the demo, you can now write:
 ```musetag

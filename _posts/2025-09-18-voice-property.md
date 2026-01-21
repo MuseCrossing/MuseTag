@@ -1,16 +1,18 @@
 ---
 layout: post
-title: "New in MuseTag: The .Voice Modifier for Speech, Thought, and Expression"
+title: "New in MuseTag: The .Voice Property for Speech, Thought, and Expression"
 date: 2025-09-18 14:30:00 +0200
 categories: features
-tags: [modifier, voice, annotation, update, tts]
+tags: [property, voice, annotation, update]
 author: MuseTag Team
+redirect_from:
+  - /2025/09/18/voice-modifier/
 ---
 
-We're excited to introduce a powerful new standard modifier in MuseTag: **`.Voice`**!
+We're excited to introduce a powerful new standard property in MuseTag: **`.Voice`**!
 This addition lets you annotate any passage as spoken, thought, or narrated by an entity—with optional expression or context—making your markup richer, more expressive, and ready for advanced analysis or audio applications.
 
-## Why a `.Voice` Modifier?
+## Why a `.Voice` Property?
 
 Not all speech is dialogue, and not all thoughts are spoken aloud. Whether you're writing fiction, scripts, comics, or interactive stories, it's often useful to:
 
@@ -21,7 +23,7 @@ Not all speech is dialogue, and not all thoughts are spoken aloud. Whether you'r
 
 ## How Does It Work?
 
-The `.Voice` modifier can be used after any entity (or group of entities) and takes up to two parameters:
+The `.Voice` property can be used after any entity (or group of entities) and takes up to two parameters:
 
 - **Visible parameter** (in square brackets `[]`): the text that is spoken, thought, or narrated
 - **Hidden parameter** (in parentheses `()`): optional expression, intonation, or context (e.g. "intrigued", "thought", "whispering")
@@ -77,7 +79,7 @@ This approach is ideal for scripts, fiction, or any narrative where you want to 
 
 ## Try It Now!
 
-The `.Voice` modifier is now part of the official MuseTag specification and is documented in the [Quick Start Guide](/10-quickstart.html), [Cheat Sheet](/40-cheat-sheet.html), and [Specifications](/99-specifications.html).
+The `.Voice` property is now part of the official MuseTag specification and is documented in the [Quick Start Guide](/10-quickstart.html), [Cheat Sheet](/40-cheat-sheet.html), and [Specifications](/99-specifications.html).
 
 > **Note:** Support for `.Voice` in the interactive demo and tools is coming soon!
 

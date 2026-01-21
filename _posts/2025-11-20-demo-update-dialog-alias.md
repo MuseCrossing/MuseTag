@@ -11,7 +11,7 @@ We've just pushed a significant update to the [MuseTag interactive demo](/30-dem
 
 ## 💬 Dialog Support
 
-The `.Dialog` modifier is now fully supported in the demo! This feature allows you to mark passages as spoken dialogue, making your narrative structure even clearer.
+The `.Dialog` property is now fully supported in the demo! This feature allows you to mark passages as spoken dialogue, making your narrative structure even clearer.
 
 In the demo, when you use:
 ```musetag
@@ -25,7 +25,7 @@ And in the entity panel, you'll see a dedicated dialogue icon (💬) next to the
 
 ## 🎭 Alias Support
 
-We've also added support for the `.Alias` modifier. This is a game-changer for natural writing flow. You can now define alternative names for your entities, and the demo will automatically recognize them in the text.
+We've also added support for the `.Alias` property. This is a game-changer for natural writing flow. You can now define alternative names for your entities, and the demo will automatically recognize them in the text.
 
 ```musetag
 @@Sherlock.Alias(Holmes)

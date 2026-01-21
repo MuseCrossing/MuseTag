@@ -7,23 +7,23 @@ tags: [syntax, grouping, demo, update]
 author: MuseTag Team
 ---
 
-A short, friendly update: entity grouping — announced on 2025-09-18 — is now actually implemented in the interactive demo. The parser now recognises grouped hidden declarations and applies the same modifier(s) to each listed entity. There is no UI change: this is a parsing/inspection improvement only.
+A short, friendly update: entity grouping — announced on 2025-09-18 — is now actually implemented in the interactive demo. The parser now recognises grouped hidden declarations and applies the same property(ies) to each listed entity. There is no UI change: this is a parsing/inspection improvement only.
 
 ## What's new
 
-- The demo parser recognises grouped hidden declarations like `@@(A,B,C).Modifier(...)` and treats them as if each entity had been individually annotated.
+- The demo parser recognises grouped hidden declarations like `@@(A,B,C).Property(...)` and treats them as if each entity had been individually annotated.
 - Grouping is strictly syntactic sugar: it does not create a new "group" entity, nor does it imply any structural relationship between members.
 
 ## Core syntax
 
 Grouping relies on the hidden-entity parentheses and commas as separators. The only supported, documented form for grouping is:
 
-- Hidden grouping using parentheses: `@@(Name1,Name2,Name3).Modifier(...)`
+- Hidden grouping using parentheses: `@@(Name1,Name2,Name3).Property(...)`
 
 Key points:
 - Parentheses `(...)` delimit the group.
 - Commas `,` separate the entity names inside the parentheses.
-- Modifiers that follow are applied to each listed entity as if the annotation were duplicated for every member.
+- Properties that follow are applied to each listed entity as if the annotation were duplicated for every member.
 - Nested groups (`@@((A,B),C)`) are not supported.
 
 ## Examples
@@ -53,7 +53,7 @@ Block examples (copy/paste into the demo):
 
 ## Try it in the demo
 
-[Open the interactive demo](/30-demo.html), paste a grouped example, and watch cards and timeline pick up the resulting entities and modifiers.
+[Open the interactive demo](/30-demo.html), paste a grouped example, and watch cards and timeline pick up the resulting entities and properties.
 
 [Learn more in the original feature announcement](/_posts/2025-09-18-entity-grouping.md). For the full syntax and technical details, [see the specifications](/99-specifications.html).
 

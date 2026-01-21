@@ -33,7 +33,7 @@ You can also use more advanced forms, for example:
 @@Jules smiled at @@(Marie).age(25)her while she was reading.
 ```
 
-Here, "Jules" is a visible entity and "Marie" is a hidden entity with a modifier (`age`) and a hidden parameter (`25`), while readers simply see:
+Here, "Jules" is a visible entity and "Marie" is a hidden entity with a property (`age`) and a hidden parameter (`25`), while readers simply see:
 
 > Jules smiled at her while she was reading.
 

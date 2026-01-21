@@ -98,7 +98,7 @@ modifiers:
       - code: "@@Paris.Geo(48.8566, 2.3522)"
         description: "Associates Paris with its GPS coordinates"
     notes: |
-      This modifier is primarily intended for use by editors or tools, not for manual entry.
+      This property is primarily intended for use by editors or tools, not for manual entry.
       It enables map visualizations and spatial queries.
 
   - name: Pov
@@ -109,7 +109,7 @@ modifiers:
         description: "Marks text as being from Jules' perspective"
     notes: |
       Affects narrative analysis and style checking.
-      Can be made global with ! modifier.
+      Can be made global with ! property.
 
   - name: Status
     description: Marks status content of section or a file
@@ -172,7 +172,7 @@ modifiers:
         description: "Marks JDS as an invisible entity; all references to JDS are hidden in output"
     notes: |
       Useful for annotating meta-entities (authors, reviewers, etc.) that should never appear in the output.
-      This modifier does not accept parameters.
+      This property does not accept parameters.
 
   - name: Alias
     description: Defines an alternative name (alias) for an entity. When the alias appears in the text, even without the @@ marker, it is recognized as a reference to the canonical entity.

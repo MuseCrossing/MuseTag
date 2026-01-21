@@ -6,7 +6,7 @@
   - Parses MuseTag annotations in the editor pane.
   - Builds an internal representation of entities and occurrences.
   - Renders preview, entity cards, timeline and document outline.
-  - Now supports hierarchical modifiers: ChildOf / ParentOf and their sugar forms.
+  - Now supports hierarchical properties: ChildOf / ParentOf and their sugar forms.
 
   NOTE: This file is an edited/extended version of the demo script to add
   hierarchical relations support and to show relations in entity cards.
@@ -176,13 +176,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 2. Second pass: Remove null entity patterns without visible parameters
     //    - @@. (bare null entity)
-    //    - @@.modifier(hidden) patterns
+    //    - @@.property(hidden) patterns
     text = text.replace(/@@\.(?:[\w:!?]+(?:\([^)]*\))?)?(?!\[)/g, "");
 
     // 4. Fourth pass: Process annotations that are meant to be visible.
     //    This includes:
     //    - @@EntityName
-    //    - @@EntityName.modifier[VisibleContent]
+    //    - @@EntityName.property[VisibleContent]
     //    - @@(HiddenEntity)[VisibleContent]
     //    - @@.[VisibleContent]
     const visibleAnnotationRegex =
@@ -226,8 +226,8 @@ document.addEventListener("DOMContentLoaded", () => {
       },
     );
 
-    // 5. Final cleanup: Remove any remaining modifier syntax that wasn't part of a match,
-    //    e.g. .modifier or .modifier(hidden) that was left over due to partial replacement
+    // 5. Final cleanup: Remove any remaining property syntax that wasn't part of a match,
+    //    e.g. .property or .property(hidden) that was left over due to partial replacement
     text = text.replace(/\.[\w:!?]+(?:\([^)]*\))?/g, "");
 
     return text;
@@ -426,7 +426,7 @@ document.addEventListener("DOMContentLoaded", () => {
             entityData.type = modName.toLowerCase();
           }
 
-          // Handle custom .Type(value) modifier
+          // Handle custom .Type(value) property
           if (modName === "Type" && modValue && !isTemporal) {
             entityData.type = modValue.toLowerCase();
           }
@@ -454,14 +454,14 @@ document.addEventListener("DOMContentLoaded", () => {
               });
             }
           } else if (modName === "Alias" && modValue) {
-            // Handle .Alias modifier
+            // Handle .Alias property
             if (!entityData.aliases.includes(modValue)) {
               entityData.aliases.push(modValue);
             }
             // Also add to declared entities so we can find it in the text
             declaredEntities.set(modValue, modValue);
           } else if (modName === "Color" && modValue) {
-            // Handle .Color modifier
+            // Handle .Color property
             entityData.color = modValue;
           } else {
             currentOccurrence.localInfo.push({
@@ -801,15 +801,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // --- View / UI Logic ---
 
-  /**
-   * Formats a modifier name for display (e.g., "PROFESSION" -> "Profession").
-   * @param {string} name The raw modifier name.
-   * @returns {string} The formatted name.
-   */
-  function formatModifierName(name) {
-    if (!name) return "";
-    return name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
-  }
+  /* formatModifierName removed — use formatPropertyName(name) instead.
+     formatPropertyName is defined earlier in this file and provides the same behaviour:
+       function formatPropertyName(name) {
+         if (!name) return "";
+         return name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
+       }
+  */
 
   /**
    * Scrolls the editor to a specific character position.
@@ -952,7 +950,7 @@ document.addEventListener("DOMContentLoaded", () => {
         body.appendChild(title);
         const ul = document.createElement("ul");
         globalInfoItems.forEach(([key, { occurrences }]) => {
-          const formattedKey = formatModifierName(key);
+          const formattedKey = formatPropertyName(key);
 
           if (occurrences.length === 1) {
             // Single occurrence - display normally
@@ -1113,7 +1111,7 @@ document.addEventListener("DOMContentLoaded", () => {
               if (key === "Dialog") {
                 return `<span title="Dialog">💬 "${value}"</span>`;
               }
-              const formattedKey = formatModifierName(key);
+              const formattedKey = formatPropertyName(key);
               return value === null
                 ? `<strong>${formattedKey}:</strong>`
                 : `<strong>${formattedKey}:</strong> ${value}`;

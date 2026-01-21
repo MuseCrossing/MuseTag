@@ -1,19 +1,21 @@
 ---
 layout: post
-title: "New in MuseTag: Hierarchical Relation Modifiers for All Your Worlds"
+title: "New in MuseTag: Hierarchical Relation Properties for All Your Worlds"
 date: 2025-09-11 13:41:27 +0200
 categories: features
-tags: [modifier, hierarchy, relation, update, annotation]
+tags: [property, hierarchy, relation, update, annotation]
+redirect_from:
+  - /2025/09/11/hierarchical-modifiers/
 author: MuseTag Team
 ---
 
-We're thrilled to announce a major new feature for MuseTag: **hierarchical relation modifiers**!  
+We're thrilled to announce a major new feature for MuseTag: **hierarchical relation properties**!  
 You can now express parent/child, part/whole, membership, containment, ancestry, and more—directly in your annotated text, with a syntax that's both powerful and intuitive.
 
-## Why Hierarchical Modifiers?
+## Why Hierarchical Properties?
 
 Stories, worlds, and timelines are rarely flat. Whether you're writing a family saga, mapping a fantasy kingdom, tracking organizations, or structuring time and space, you need to express how things relate to each other.  
-With the new hierarchical modifiers, you can now:
+With the new hierarchical properties, you can now:
 
 - Build family trees and genealogies
 - Model spatial hierarchies (room/house/city/country)
@@ -23,7 +25,7 @@ With the new hierarchical modifiers, you can now:
 
 ## The Canonical Syntax: `.ChildOf` and `.ParentOf`
 
-The new core modifiers are:
+The new core properties are:
 
 - **`.ChildOf(entity)`**  
   Declares that the current entity is the child, member, or part of the specified entity.
@@ -39,11 +41,11 @@ The new core modifiers are:
 @@Marie.ParentOf(@@Alice)
 ```
 
-These two modifiers are strictly inverse and can be used interchangeably depending on which direction feels most natural in your narrative.
+These two properties are strictly inverse and can be used interchangeably depending on which direction feels most natural in your narrative.
 
 ## Use the Alias That Fits Your Story
 
-To make MuseTag as expressive and writer-friendly as possible, we've also introduced a suite of **alias modifiers**.  
+To make MuseTag as expressive and writer-friendly as possible, we've also introduced a suite of **alias properties**.  
 All of the following are strictly equivalent to `.ChildOf` or `.ParentOf`—use whichever reads best in your context:
 
 - `.PartOf` / `.HasPart`
@@ -96,10 +98,10 @@ All of the following are strictly equivalent to `.ChildOf` or `.ParentOf`—use 
 
 ## Try It Now!
 
-You can start using these hierarchical modifiers in your MuseTag-annotated texts right away.  
+You can start using these hierarchical properties in your MuseTag-annotated texts right away.  
 Check out the updated [cheat sheet](/40-cheat-sheet.html) for a quick reference, and see the [specifications](/99-specifications.html) for all the details.
 
-**Note:** These modifiers are now part of the official MuseTag specification and documentation.  
+**Note:** These properties are now part of the official MuseTag specification and documentation.  
 **However, they are not yet implemented in the interactive demo.**  
 We’re eager to bring support for hierarchical relations to the demo and tools very soon—stay tuned!
 

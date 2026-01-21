@@ -1,13 +1,15 @@
 ---
 layout: post
-title: "Bring Your Characters to Color: Introducing the .Color Modifier"
+title: "Bring Your Characters to Color: Introducing the .Color Property"
 date: 2025-11-06 13:40:00 +0200
 categories: features
-tags: [modifier, color, visualization, annotation]
+tags: [property, color, visualization, annotation]
 author: MuseTag Team
+redirect_from:
+  - /2025/11/06/color-modifier/
 ---
 
-Color carries meaning. In a single glance it can separate protagonists from background players, mark recurring themes, or make a timeline immediately readable. Today we add a simple, practical tool to MuseTag's palette: the `.Color` standard modifier.
+Color carries meaning. In a single glance it can separate protagonists from background players, mark recurring themes, or make a timeline immediately readable. Today we add a simple, practical tool to MuseTag's palette: the `.Color` standard property.
 
 This is not an attempt to make your prose paint-by-numbers. It's a pragmatic hook for the many visualization and editing tools that help authors shape stories. `.Color` allows you to suggest a display color for an entity — so timelines, interaction graphs, editor highlights, and other visual helpers can adopt a coherent, author-driven palette.
 
@@ -49,7 +51,7 @@ A few concrete ways tools can exploit the color attribute:
 
 `.Color` is intentionally lightweight. It does one job: give visual tools a reliable hint about how to present entities. Because it's simple, many different visualizations and pipelines can adopt it without friction.
 
-Here is a short, slightly more elaborate example showing colors used together with modifiers you already know:
+Here is a short, slightly more elaborate example showing colors used together with properties you already know:
 
 ```musetag
 @@Holmes.Color(#ffcc00).Type(character)
@@ -76,7 +78,7 @@ Colors are visual affordances — they can improve clarity but can also introduc
 
 ## Where this fits in the MuseTag workflow
 
-`.Color` belongs in the same family as other global modifiers that describe persistent entity attributes. It's metadata for tools; it shouldn't alter the narrative itself.
+`.Color` belongs in the same family as other global properties that describe persistent entity attributes. It's metadata for tools; it shouldn't alter the narrative itself.
 
 We'll update the interactive demo and companion tools to honor `.Color` in upcoming releases. Meanwhile, you can start using the modifier in your manuscripts today — tools that read the YAML spec or the quick reference can implement color-aware views easily.
 

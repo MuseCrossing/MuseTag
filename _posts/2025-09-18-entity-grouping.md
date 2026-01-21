@@ -8,7 +8,7 @@ author: MuseTag Team
 ---
 
 We're excited to announce a new feature in MuseTag that makes annotating your stories even faster and more expressive: **entity grouping syntax**!  
-You can now apply the same modifier(s) to several entities at once, with a single, concise annotation.
+You can now apply the same property(ies) to several entities at once, with a single, concise annotation.
 
 ## Why Group Entities?
 
@@ -27,12 +27,12 @@ With the new grouping syntax, you can factorize your annotation:
 ```
 
 This is **strictly equivalent** to the two separate annotations above.  
-Grouping is a **syntactic convenience**—it does not create a persistent group or relationship between the entities. It simply lets you apply the same modifier(s) to each entity in the list, making your markup cleaner and your intent clearer.
+Grouping is a **syntactic convenience**—it does not create a persistent group or relationship between the entities. It simply lets you apply the same property(ies) to each entity in the list, making your markup cleaner and your intent clearer.
 
 ## How Does It Work?
 
 - List the entities you want to annotate, separated by commas, inside the parentheses of a hidden entity declaration.
-- Apply any modifier(s) as usual after the group.
+- Apply any property(ies) as usual after the group.
 
 **Example:**
 
@@ -45,7 +45,7 @@ Grouping is a **syntactic convenience**—it does not create a persistent group 
 
 This marks both Sherlock and Watson as participants in the dialogue.
 
-You can use grouping with any modifier:
+You can use grouping with any property:
 
 ```musetag
 @@(Paris,Lyon,Marseille).Type(place)

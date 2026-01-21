@@ -60,7 +60,7 @@ If you want to refer to the entity using a different name, synonym, or pronoun, 
 
 #### Use Aliases for Alternative Names
 
-You can also define alternative names (aliases) for an entity using the `.Alias` standard modifier. When you define an alias, any occurrence of that alias in your text—even without the `@@` marker—will be recognized as a reference to the canonical entity.
+You can also define alternative names (aliases) for an entity using the `.Alias` standard property. When you define an alias, any occurrence of that alias in your text—even without the `@@` marker—will be recognized as a reference to the canonical entity.
 
 For example:
 
@@ -118,16 +118,16 @@ or, if you need nothing we did not think about:
 The @@Spirit.Type(idea) was @@Hegel.
 ```
 
-Those modifiers are removed for the readers :
+Those properties are removed for the readers :
 
 > London was foggy yesterday.
 > Arthur hold Excalibur.
 > Christmas was the day after.
 > The Spirit was Hegel.
 
-But those modifiers helps MuseTag tools to classify your entities and make your documentation clearer. You just to have use those once: when MuseTag learnt that London is a place, you don't have to tell it twice.
+But those properties help MuseTag tools to classify your entities and make your documentation clearer. You just need to use those once: when MuseTag learnt that London is a place, you don't have to tell it twice.
 
-This is only a special and powerful use of modifiers. You will learn more about them below.
+This is only a special and powerful use of properties. You will learn more about them below.
 
 ### Annotate Entities
 
@@ -135,7 +135,7 @@ You may annotate an entity at any time easily:
 
 ### Annotate Multiple Entities at Once (Grouping Syntax)
 
-You can apply the same modifier(s) to several entities at once by listing them, separated by commas, inside the parentheses of a hidden entity declaration. This is a **syntactic convenience**: the modifier(s) are applied to each entity individually.
+You can apply the same property(ies) to several entities at once by listing them, separated by commas, inside the parentheses of a hidden entity declaration. This is a **syntactic convenience**: the property(ies) are applied to each entity individually.
 
 For example:
 
@@ -181,15 +181,15 @@ You can attach a note to an entity for just one occurrence (local note), or for 
 - Use `@@Entity_(note)` for a global note (applies everywhere the entity appears, unless a local note is present).
 
 **Note:**
-Global modifiers (like `.GNote`, `.DESCRIPTION`, etc.) are cumulative: each occurrence adds information to the entity, rather than replacing previous values.
+Global properties (like `.GNote`, `.DESCRIPTION`, etc.) are cumulative: each occurrence adds information to the entity, rather than replacing previous values.
 
-### Add Visible Details with Modifier Parameters
+### Add Visible Details with Property Parameters
 
 Want to show additional information about an entity in the text? Use square brackets:
 
-### Mark Speech and Thought with the `.Voice` Modifier
+### Mark Speech and Thought with the `.Voice` Property
 
-You can explicitly mark a passage as spoken or thought by an entity using the standard `.Voice` modifier. The visible parameter (in square brackets) is the spoken or thought text; the hidden parameter (in parentheses) can indicate expression, intonation, or context (e.g. "intrigued", "thought", "whispering").
+You can explicitly mark a passage as spoken or thought by an entity using the standard `.Voice` property. The visible parameter (in square brackets) is the spoken or thought text; the hidden parameter (in parentheses) can indicate expression, intonation, or context (e.g. "intrigued", "thought", "whispering").
 
 For example:
 
@@ -199,9 +199,9 @@ For example:
 
 This allows you to identify speech, thoughts, or interior monologue for each entity, and can be used for analysis or to drive text-to-speech (TTS) engines with different voices or expressions.
 
-#### Semantic Imbrication of Modifiers
+#### Semantic Imbrication of Properties
 
-MuseTag lets you combine and nest modifiers in a way that matches the structure of your story. For example, you can use `.Dialog` to mark a whole dialogue block, and `.Voice` inside it to attribute each line to a character:
+MuseTag lets you combine and nest properties in a way that matches the structure of your story. For example, you can use `.Dialog` to mark a whole dialogue block, and `.Voice` inside it to attribute each line to a character:
 
 ```musetag
 @@.Dialog[
@@ -210,7 +210,7 @@ MuseTag lets you combine and nest modifiers in a way that matches the structure 
 ]
 ```
 
-This reflects the narrative structure: a dialogue containing several interventions, each attributed to a speaker. You can freely combine and nest modifiers to express complex situations—MuseTag is designed to follow your narrative logic, not to restrict it.
+This reflects the narrative structure: a dialogue containing several interventions, each attributed to a speaker. You can freely combine and nest properties to express complex situations—MuseTag is designed to follow your narrative logic, not to restrict it.
 
 **Tip:**  
 You can also use `.Voice` with the null entity (`@@.`) to indicate a vocal effect or expression for narration or any passage not attributed to a specific entity.  
@@ -221,9 +221,9 @@ For example:
 ```
 This marks the narration as intended to be read in a whisper, useful for TTS or dramatic reading.
 
-### Mark Dialogues with the `.Dialog` Modifier
+### Mark Dialogues with the `.Dialog` Property
 
-You can explicitly mark a passage as a dialogue using the standard `.Dialog` modifier. The parameter is the dialogue text itself, usually provided as a visible parameter in square brackets (`[]`). When used with entity grouping, all listed entities are considered participants in the dialogue.
+You can explicitly mark a passage as a dialogue using the standard `.Dialog` property. The parameter is the dialogue text itself, usually provided as a visible parameter in square brackets (`[]`). When used with entity grouping, all listed entities are considered participants in the dialogue.
 
 ```musetag
 @@(Sherlock,Watson).Dialog[
@@ -251,13 +251,13 @@ The information is stored in Watson's entity card:
 - Appearances: Chapter 1
 ```
 
-### Modifier Case: Context, Permanent, and Standard Modifiers
+### Property Case: Context, Permanent, and Standard Properties
 
-Modifier case matters in MuseTag:
+Property case matters in MuseTag:
 
-- **Lowercase modifiers** (e.g. `.mood`, `.age`) are for context-specific or temporary information.
-- **UPPERCASE modifiers** (e.g. `.BRAVE`, `.MAGICAL`) are for permanent attributes of an entity, defined by you.
-- **Capitalized modifiers** (e.g. `.Type`, `.Status`, `.Event`, `.Place`, `.Pov`, `.Object`, `.Todo`, `.Version`, `.Draft`, `.Final`, `.Geo`) are standard modifiers defined by MuseTag or its tools. You can also create your own modifiers, but remember that case is always significant.
+- **Lowercase properties** (e.g. `.mood`, `.age`) are for context-specific or temporary information.
+- **UPPERCASE properties** (e.g. `.BRAVE`, `.MAGICAL`) are for permanent attributes of an entity, defined by you.
+- **Capitalized properties** (e.g. `.Type`, `.Status`, `.Event`, `.Place`, `.Pov`, `.Object`, `.Todo`, `.Version`, `.Draft`, `.Final`, `.Geo`) are standard properties defined by MuseTag or its tools. You can also create your own properties, but remember that case is always significant.
 
 For example:
 
@@ -265,9 +265,9 @@ For example:
 @@Arthur.BRAVE.tired entered the room with @@Excalibur.Object.MAGICAL.
 ```
 
-In this example, Arthur is always brave (`.BRAVE`, permanent) but only tired in this context (`.tired`, temporary). Excalibur is always magical (`.MAGICAL`, permanent) and is explicitly marked as an object using the standard modifier `.Object`.
+In this example, Arthur is always brave (`.BRAVE`, permanent) but only tired in this context (`.tired`, temporary). Excalibur is always magical (`.MAGICAL`, permanent) and is explicitly marked as an object using the standard property `.Object`.
 
-There are also advanced modifiers, such as `.Geo(latitude, longitude)`, which can be used by editors to associate a place with its geographic coordinates for map visualization.
+There are also advanced properties, such as `.Geo(latitude, longitude)`, which can be used by editors to associate a place with its geographic coordinates for map visualization.
 
 ### Store Hidden Metadata
 
@@ -311,7 +311,7 @@ MuseTag-enabled tools can generate chronological timelines:
 
 ### Indicate Point of View
 
-Use modifiers to show whose perspective a scene is from:
+Use properties to show whose perspective a scene is from:
 
 ```musetag
 ## Chapter 1 @@(Watson).Pov
@@ -370,7 +370,7 @@ MuseTag-enabled tools would generate:
 ## What's Next?
 
 - **Combine with Markdown**: Use all standard Markdown features alongside MuseTag annotations.
-- **Explore Modifiers**: Try `.mood()`, `.Status(draft)`, or create your own.
+- **Explore Properties**: Try `.mood()`, `.Status(draft)`, or create your own.
 - **Build Your World**: Create a consistent set of characters, places, and events.
 - **Structure Your Narrative**: Use annotations to track plot arcs and themes.
 - **Stay tuned for tools**: While dedicated MuseTag tools are still in development, your annotations are future-proof and will be compatible with upcoming editors and visualization utilities.
@@ -385,9 +385,9 @@ MuseTag-enabled tools would generate:
 - Remember that MuseTag annotations can be completely hidden from your final reader.
 - Use visible parameters `[]` when you want the information to appear in your text.
 - Use invisible parameters `()` when you want to store metadata only.
-- You can combine multiple modifiers of different types on the same entity.
+- You can combine multiple properties of different types on the same entity.
 - The default entity type is character, but you can specify others with `.Type(...)`.
-- The distinction between lowercase, UPPERCASE, and Capitalized modifiers helps you organize context, permanent, and standard information.
+- The distinction between lowercase, UPPERCASE, and Capitalized properties helps you organize context, permanent, and standard information.
 
 Ready to organize your narrative world?
 

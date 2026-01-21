@@ -1,17 +1,17 @@
 ---
 layout: post
-title: "MuseTag: Imbrication of Modifiers and Entities—How Deep Can You Go?"
+title: "MuseTag: Imbrication of Properties and Entities—How Deep Can You Go?"
 date: 2025-09-18 15:00:00 +0200
 categories: features
 tags: [syntax, imbrication, annotation, hierarchy, dialog, voice]
 author: MuseTag Team
 ---
 
-MuseTag is designed to be both expressive and flexible, letting you annotate your stories with as much nuance and structure as you need. One of the most powerful features of MuseTag is the **imbrication** (nesting) of entities and modifiers—allowing you to represent complex relationships, dialogues, and narrative structures in a natural way.
+MuseTag is designed to be both expressive and flexible, letting you annotate your stories with as much nuance and structure as you need. One of the most powerful features of MuseTag is the **imbrication** (nesting) of entities and properties—allowing you to represent complex relationships, dialogues, and narrative structures in a natural way.
 
 ## What Is Parameter Imbrication?
 
-Parameter imbrication means that the parameters of a modifier (the content inside parentheses or brackets) can themselves contain other MuseTag annotations: entities, modifiers, even other nested structures. There is **no artificial limit** to how deep you can go—MuseTag is designed to follow your narrative logic, not to restrict it.
+Parameter imbrication means that the parameters of a property (the content inside parentheses or brackets) can themselves contain other MuseTag annotations: entities, properties, even other nested structures. There is **no artificial limit** to how deep you can go—MuseTag is designed to follow your narrative logic, not to restrict it.
 
 This is especially useful for:
 
@@ -21,7 +21,7 @@ This is especially useful for:
 
 ## How Does It Work?
 
-MuseTag processes your text **successively**: each modifier only cares about its own parameter, extracts what it needs (often the first entity), and then the global analysis continues inside the parameter, treating it as regular MuseTag text. There is no need for deep recursive parsing—just a natural, step-by-step walk through your markup.
+MuseTag processes your text **successively**: each property only cares about its own parameter, extracts what it needs (often the first entity), and then the global analysis continues inside the parameter, treating it as regular MuseTag text. There is no need for deep recursive parsing—just a natural, step-by-step walk through your markup.
 
 ### Hierarchical Example
 

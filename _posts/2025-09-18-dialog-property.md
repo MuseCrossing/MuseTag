@@ -1,19 +1,21 @@
 ---
 layout: post
-title: "New in MuseTag: The .Dialog Modifier for Effortless Dialogue Annotation"
+title: "New in MuseTag: The .Dialog Property for Effortless Dialogue Annotation"
 date: 2025-09-18 14:15:00 +0200
 categories: features
-tags: [modifier, dialog, annotation, update]
+tags: [property, dialog, annotation, update]
 author: MuseTag Team
+redirect_from:
+  - /2025/09/18/dialog-modifier/
 ---
 
-We're delighted to introduce a new standard modifier in MuseTag: **`.Dialog`**!
+We're delighted to introduce a new standard property in MuseTag: **`.Dialog`**!
 This addition makes it easier than ever to annotate dialogues in your stories, scripts, or any narrative text—while keeping your markup clean, expressive, and future-proof.
 
-## Why a `.Dialog` Modifier?
+## Why a `.Dialog` Property?
 
 Dialogues are at the heart of many stories. Whether you're writing fiction, theater, comics, or screenplays, it's crucial to clearly indicate which passages are spoken exchanges and who is involved.
-With the new `.Dialog` modifier, you can:
+With the new `.Dialog` property, you can:
 
 - Explicitly mark dialogue passages in your text
 - Easily indicate all participants in a conversation (even with entity grouping)
@@ -21,7 +23,7 @@ With the new `.Dialog` modifier, you can:
 
 ## How Does It Work?
 
-Simply use the `.Dialog` modifier after a group and provide the dialogue text as a parameter—usually in square brackets for visible text.
+Simply use the `.Dialog` property after a group and provide the dialogue text as a parameter—usually in square brackets for visible text.
 
 **Basic example:**
 
@@ -49,7 +51,7 @@ Grouping allows you to annotate multi-character exchanges in a single, concise a
 
 ## Try It Now!
 
-The `.Dialog` modifier is now part of the official MuseTag specification and is documented in the [Quick Start Guide](/10-quickstart.html), [Cheat Sheet](/40-cheat-sheet.html), and [Specifications](/99-specifications.html).
+The `.Dialog` property is now part of the official MuseTag specification and is documented in the [Quick Start Guide](/10-quickstart.html), [Cheat Sheet](/40-cheat-sheet.html), and [Specifications](/99-specifications.html).
 
 > **Note:** Support for `.Dialog` in the interactive demo and tools is coming soon!
 

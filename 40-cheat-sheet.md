@@ -8,7 +8,7 @@ layout: cheatsheet
     <tr><th>Description</th><th>Syntax</th></tr>
     <tr><td>Visible</td><td><code>@@Entity</code></td></tr>
     <tr><td>Hidden</td><td><code>@@(Entity)</code></td></tr>
-    <tr><td>Group (apply modifier to several entities)</td><td><code>@@(Entity1,Entity2,...)</code></td></tr>
+    <tr><td>Group (apply property to several entities)</td><td><code>@@(Entity1,Entity2,...)</code></td></tr>
     <tr><td>The <em>Null</em> one</td><td><code>@@.</code></td></tr>
     <tr><td>Declare once, use freely</td><td><code>@@Entity</code> (declare once; all further uses of the name are tracked automatically)</td></tr>
     <tr><td>Entity hierarchy</td><td><code>@@Entity</code> (main), <code>@@@Entity</code> (secondary), <code>@@@@Entity</code> (minor)</td></tr>
@@ -18,17 +18,17 @@ layout: cheatsheet
 </table>
 
 <table>
-    <caption>Modifiers</caption>
+    <caption>Properties</caption>
     <tr><th>Description</th><th>Syntax</th></tr>
-    <tr><td>Local</td><td><code>@@Entity.modifier</code></td></tr>
-    <tr><td>Global</td><td><code>@@Entity.MODIFIER</code></td></tr>
-    <tr><td>With visible parameter</td><td><code>@@Entity.modifier[parameter]</code></td></tr>
-    <tr><td>With hidden parameter</td><td><code>@@Entity.modifier(parameter)</code></td></tr>
-    <tr><td>With both parameters</td><td><code>@@Entity.modifier[visible](hidden)</code></td></tr>
+    <tr><td>Local</td><td><code>@@Entity.property</code></td></tr>
+    <tr><td>Global</td><td><code>@@Entity.PROPERTY</code></td></tr>
+    <tr><td>With visible parameter</td><td><code>@@Entity.property[parameter]</code></td></tr>
+    <tr><td>With hidden parameter</td><td><code>@@Entity.property(parameter)</code></td></tr>
+    <tr><td>With both parameters</td><td><code>@@Entity.property[visible](hidden)</code></td></tr>
 </table>
 
 <table>
-    <caption>Standard modifiers</caption>
+    <caption>Standard properties</caption>
     <tr><th>Description</th><th>Syntax</th></tr>
     <tr><td>Type of entity</td><td><code>@@Entity.Type(character)</code></td></tr>
     <tr><td>Point of view</td><td><code>@@Entity.Pov</code></td></tr>
@@ -55,7 +55,7 @@ layout: cheatsheet
     <tr><td>Correction (fix)</td><td><code>@@Entity.Fix[original](correction)</code></td></tr>
     <tr><td>Suggestion</td><td><code>@@Entity.Suggest[original](suggestion)</code></td></tr>
     <tr><td>Comment</td><td><code>@@Entity.Comment[fragment](comment)</code></td></tr>
-    <tr><td colspan="2"><em>Global modifiers are cumulative: each occurrence adds information to the entity, unless explicitly defined as unique (e.g. <code>.Status</code>).</em></td></tr>
+    <tr><td colspan="2"><em>Global properties are cumulative: each occurrence adds information to the entity, unless explicitly defined as unique (e.g. <code>.Status</code>).</em></td></tr>
 </table>
 
 <p><strong>Note:</strong> You can also use <code>.Voice</code> with the null entity (<code>@@.</code>) to indicate a vocal effect or expression for narration or any passage not attributed to a specific entity.<br>
@@ -63,7 +63,7 @@ layout: cheatsheet
 </p>
 
 <table>
-    <caption>Shorthands for standard modifiers</caption>
+    <caption>Shorthands for standard properties</caption>
     <tr><th>Shorthand</th><th>for</th></tr>
     <tr><td><code>@@Entity.Place</code></td><td><code>@@Entity.Type(place)</code></td></tr>
     <tr><td><code>@@Entity.Object</code></td><td><code>@@Entity.Type(object)</code></td></tr>

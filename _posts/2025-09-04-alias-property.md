@@ -1,15 +1,17 @@
 ---
 layout: post
-title: "Introducing the .Alias Modifier: Flexible Alternative Names for Your Entities"
+title: "Introducing the .Alias Property: Flexible Alternative Names for Your Entities"
 date: 2025-09-04 14:06:00 +0200
 categories: features
-tags: [modifier, alias, update, annotation]
+tags: [property, alias, update, annotation]
+redirect_from:
+  - /2025/09/04/alias-modifier/
 author: MuseTag Team
 ---
 
-We're excited to announce a brand new feature in the MuseTag language: the **`.Alias` standard modifier**! This addition makes it easier than ever to refer to your characters, places, and other entities using alternative names—without losing the power of semantic annotation.
+We're excited to announce a brand new feature in the MuseTag language: the **`.Alias` standard property**! This addition makes it easier than ever to refer to your characters, places, and other entities using alternative names—without losing the power of semantic annotation.
 
-## Why an Alias Modifier?
+## Why an Alias Property?
 
 In stories, it's common for the same character or place to be called by different names: nicknames, titles, abbreviations, or even code names. Until now, MuseTag tracked entities by their canonical name (the one you declare with `@@`). But what if you want "Holmes" and "Sherlock Holmes" to always be recognized as the same person, even if you only use `@@` once?
 
@@ -17,7 +19,7 @@ That's where `.Alias` comes in!
 
 ## How Does It Work?
 
-With the `.Alias` modifier, you can define one or more alternative names for any entity. Once an alias is set, **any occurrence of that alias in your text—even without the `@@` marker—will be recognized as a reference to the canonical entity**.
+With the `.Alias` property, you can define one or more alternative names for any entity. Once an alias is set, **any occurrence of that alias in your text—even without the `@@` marker—will be recognized as a reference to the canonical entity**.
 
 ### Example
 
@@ -40,7 +42,7 @@ You can define as many aliases as you need for each entity. All aliases are cumu
 
 ## Not Yet in the Demo
 
-> **Note:** The `.Alias` modifier is now part of the official MuseTag specification and documentation, but it is **not yet supported in the interactive demo**. We're working on updating the demo to fully support aliases—stay tuned for updates!
+> **Note:** The `.Alias` property is now part of the official MuseTag specification and documentation, but it is **not yet supported in the interactive demo**. We're working on updating the demo to fully support aliases—stay tuned for updates!
 
 ## Try It in Your Own Writing
 

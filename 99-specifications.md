@@ -38,7 +38,7 @@ If you refer to the entity using a different name, synonym, or pronoun, use the 
 #### Invisible Entities
 
 MuseTag supports "invisible entities"—entities that are never shown in the final text, regardless of how they are referenced (even by their canonical name without `@@`).
-Invisible entities are declared by applying the standard `.Hidden` modifier to the entity. Once an entity is marked as `.Hidden`, all its occurrences (including canonical name references) are omitted from the final output.
+Invisible entities are declared by applying the standard `.Hidden` property to the entity. Once an entity is marked as `.Hidden`, all its occurrences (including canonical name references) are omitted from the final output.
 This is useful for annotating contributors, beta-readers, or other meta-narrative actors who should not appear in the story itself.
 
 Example:
@@ -49,7 +49,7 @@ The child@@JDS.Fix[x](s) walk@@JDS.Fix[](ed) to school.
 Here, `JDS` is an invisible entity (e.g., a beta-reader or author), and all references to `JDS` are hidden in the final text.
 
 **Persistence:**
-Once `.Hidden` is applied to an entity, it is invisible everywhere in the text, regardless of subsequent usage or modifier application.
+Once `.Hidden` is applied to an entity, it is invisible everywhere in the text, regardless of subsequent usage or property application.
 
 #### Entity hierarchy
 
@@ -133,7 +133,7 @@ MuseTag allows you to annotate multiple entities at once using a grouping syntax
 @@(Claire,Antoine).age(26)
 ```
 
-This is a **syntactic convenience**: it is strictly equivalent to writing the same annotation for each entity individually. The modifier(s) following the group are applied to each entity in the group as if they were annotated separately.
+This is a **syntactic convenience**: it is strictly equivalent to writing the same annotation for each entity individually. The property(ies) following the group are applied to each entity in the group as if they were annotated separately.
 
 For example, the above is equivalent to:
 
@@ -144,36 +144,36 @@ For example, the above is equivalent to:
 
 Grouping does not create a persistent group or relationship between the entities; it simply allows you to factorize your annotations for clarity and brevity. There is no support for nested groups, and mixing visible and hidden entities in a group is allowed by syntax but not generally useful.
 
-### Entity Modifiers
-Entity modifiers allow you to add attributes and metadata to entities using dot notation. These modifiers can be temporary states, permanent traits, or standard features.
+### Entity Properties
+Entity properties allow you to add attributes and metadata to entities using dot notation. These properties can be temporary states, permanent traits, or standard features.
 ```musetag
-@@Jules.Pov             # Simple modifier
+@@Jules.Pov             # Simple property
 ```
 
-#### Types of Modifiers
-MuseTag supports three distinct categories of modifiers:
-1. **local modifiers** (lowercase `.modifier`)
+#### Types of Properties
+MuseTag supports three distinct categories of properties:
+1. **local properties** (lowercase `.property`)
    - Must start with a lowercase letter
    - Represent temporary or contextual attributes
    - Example: `.happy`, `.injured`, `.angry`
 
-2. **GLOBAL modifiers** (uppercase `.MODIFIER`)
+2. **GLOBAL properties** (uppercase `.PROPERTY`)
    - Must contain only uppercase letters
    - Define permanent characteristics
    - Example: `.NAME`, `.OCCUPATION`, `.BIRTHPLACE`
 
-3. **Standard modifiers** (Title-case or Namespaced, see §2.3.4 and §2.3.5)
-   - Built-in modifiers (Title-case):
+3. **Standard properties** (Title-case or Namespaced, see §2.3.4 and §2.3.5)
+   - Built-in properties (Title-case):
      - Must start with a capital letter, followed by lowercase letters
      - Reserved for core MuseTag features
      - Examples: `.Character`, `.Place`, `.Type`
-   - Application modifiers (Namespaced):
+   - Application properties (Namespaced):
      - Use registered namespace prefix followed by any name
-     - Allow applications to extend the modifier system
+     - Allow applications to extend the property system
      - Examples: `Writer:plot`, `Analysis:theme`
 
-#### Modifier Parameters
-Modifiers can accept parameters using two different syntaxes:
+#### Property Parameters
+Properties can accept parameters using two different syntaxes:
 
 **Hidden parameters** use parentheses `()` for meta-information that should not appear in the final text:
 ```musetag
@@ -189,7 +189,7 @@ Modifiers can accept parameters using two different syntaxes:
 > detective investigated the case.
 
 **Combined parameters:**
-A modifier can accept both a visible parameter (`[]`) and a hidden parameter (`()`) at the same time.
+A property can accept both a visible parameter (`[]`) and a hidden parameter (`()`) at the same time.
 This enables advanced editorial and collaborative features, such as proposing corrections, suggestions, or comments, where the visible parameter is the text to be shown and the hidden parameter is the meta-information (e.g., correction, suggestion, or comment).
 
 Example:
@@ -203,10 +203,10 @@ Sherlock JDS.Comment[put his foot in it](awkward phrasing).
 - `.Suggest[...](...)`: Suggests a reformulation.
 - `.Comment[...](...)`: Adds an editorial comment.
 
-The parameter content is passed as-is to the modifier implementation, which can parse it according to its own needs.
+The parameter content is passed as-is to the property implementation, which can parse it according to its own needs.
 
-##### Combining Modifiers
-Modifiers can be combined freely (order does not affect semantic meaning):
+##### Combining Properties
+Properties can be combined freely (order does not affect semantic meaning):
 ```musetag
 @@Holmes.PROFESSION(detective).mood(worried)
 @@Watson.BACKGROUND(military).injured.tired
@@ -223,23 +223,23 @@ A parameter can be repeated if you like:
 @@Jules.mood(sad).mood(embarassed) said something.
 ```
 
-##### Null Modifiers (Unqualified Annotations)
+##### Null Properties (Unqualified Annotations)
 
-MuseTag allows annotating an entity with a parameter without specifying a modifier. This is called the **null modifiers**. There are two forms:
+MuseTag allows annotating an entity with a parameter without specifying a property. This is called the **null properties**. There are two forms:
 
-- **Local null modifier** (applies only at the specific occurrence):
+- **Local null property** (applies only at the specific occurrence):
   ```musetag
   @@Entity(parameter)
   ```
-  This is a shortcut for `@@Entity.Note(parameter)`, where `.Note` is the standard modifier for a local note.
+  This is a shortcut for `@@Entity.Note(parameter)`, where `.Note` is the standard property for a local note.
 
-- **Global null modifier** (applies everywhere the entity appears, unless overridden locally):
+- **Global null property** (applies everywhere the entity appears, unless overridden locally):
   ```musetag
   @@Entity_(parameter)
   ```
-  This is a shortcut for `@@Entity.Gnote(parameter)`, where `.Gnote` is the standard modifier for a global note and the underscore after the entity name indicates global scope.
+  This is a shortcut for `@@Entity.Gnote(parameter)`, where `.Gnote` is the standard property for a global note and the underscore after the entity name indicates global scope.
 
-The null modifier is designed for quick, unqualified annotations—information that is relevant in the moment but does not fit a specific, structured modifier. The global form is useful for defining recurring or default information about an entity, while the local form is for context-specific notes.
+The null property is designed for quick, unqualified annotations—information that is relevant in the moment but does not fit a specific, structured property. The global form is useful for defining recurring or default information about an entity, while the local form is for context-specific notes.
 
 **Examples:**
 ```musetag
@@ -248,7 +248,7 @@ The null modifier is designed for quick, unqualified annotations—information t
 ```
 In these examples, "red hair" is attached to Anne globally but "25 years old" only at the time where it appears.
 
-Unqualified annotations are less exploitable by automated tools or structured exports. For maximum semantic clarity and tool support, prefer explicit modifiers when possible.
+Unqualified annotations are less exploitable by automated tools or structured exports. For maximum semantic clarity and tool support, prefer explicit properties when possible.
 
 ##### Multi-line Parameters
 Parameters can span multiple lines for better readability and organization:
@@ -262,15 +262,15 @@ Parameters can span multiple lines for better readability and organization:
 )
 ```
 Key points:
-- Opening parenthesis must immediatly follow the modifier
+- Opening parenthesis must immediatly follow the property
 - Content can span multiple lines
 
 #### Visibility Rules
-Modifiers themselves never appear in the final text, but their parameters may:
-- **Modifiers**: Always hidden (`.drunk`, `.PROFESSION`, etc.)
+Properties themselves never appear in the final text, but their parameters may:
+- **Properties**: Always hidden (`.drunk`, `.PROFESSION`, etc.)
 - **Hidden parameters** `()`: Never appear in final text
 - **Visible parameters** `[]`: Always appear in final text
-- **Invisible entities** (`.Hidden`): All occurrences of the entity are hidden, including canonical name references, regardless of context or modifier usage.
+- **Invisible entities** (`.Hidden`): All occurrences of the entity are hidden, including canonical name references, regardless of context or property usage.
 - **Combined parameters**: When both a visible and a hidden parameter are present, the visible parameter is shown in the final text, and the hidden parameter is omitted.
 
 ```musetag
@@ -288,13 +288,13 @@ The child@@JDS.Fix[x](s) walk@@JDS.Fix[](ed) to school.
 ```
 > The childx walk to school.
 
-#### Standard Modifiers
-Standard modifiers are documented in `namespaces/global.yaml` following the same format as application-specific modifiers (see §2.3.5.4). The specification below provides an overview of core standard modifiers, but the authoritative reference is the YAML file.
+#### Standard Properties
+Standard properties are documented in `namespaces/global.yaml` following the same format as application-specific properties (see §2.3.5.4). The specification below provides an overview of core standard properties, but the authoritative reference is the YAML file.
 
 ##### Reserved Capitalization
-Modifiers starting with a capital letter (and not entirely uppercase, see §2.3.1) are reserved for standard MuseTag features. Custom modifiers MUST start with a lowercase letter or be entirely uppercase.
+Properties starting with a capital letter (and not entirely uppercase, see §2.3.1) are reserved for standard MuseTag features. Custom properties MUST start with a lowercase letter or be entirely uppercase.
 
-##### Core Standard Modifiers
+##### Core Standard Properties
 - `.Type(type)`: Defines the entity type. Common types include: "character", "place", "event", "object", or may be whatever you want.
   - `.Character`: Sugar for `.Type(character)`
   - `.Place`: Sugar for `.Type(place)`
@@ -327,7 +327,7 @@ Modifiers starting with a capital letter (and not entirely uppercase, see §2.3.
 --- I do not know what to think.
 ]`
 - `.Geo(latitude, longitude)`: Associates geographic coordinates with an entity (usually a place). Example: `@@Paris.Geo(48.8566, 2.3522)`
- - This modifier is primarily intended for use by editors or tools, not for manual entry.
+ - This property is primarily intended for use by editors or tools, not for manual entry.
 - `.Status(status)`: Indicates the status of the associated section.
   - `.Draft`: Sugar for `.Status(draft)`
   - `.Final`: Sugar for `.Status(final)`
@@ -342,7 +342,7 @@ Modifiers starting with a capital letter (and not entirely uppercase, see §2.3.
 - `.Voice(expression)[text]`: Marks a passage as spoken or thought by the annotated entity, with optional expression/context. The visible parameter (in square brackets) is the spoken or thought text; the hidden parameter (in parentheses) can indicate expression, intonation, or context (e.g. "intrigued", "thought", "whispering"). Useful for identifying speech, thoughts, or interior monologue, and for TTS (text-to-speech) or to guide actors recording audiobooks or dramatic readings, as well as for analysis.
   - Example: `@@(Holmes).Voice(intrigued)[What is happening here?]`
 
-- `.Color(color)`: Assigns a display color to the entity for graphical tools and visualizations (timelines, interaction graphs, highlights). The parameter is the color value and is normally provided as an invisible parameter (parentheses). Accepted formats follow standard CSS color definitions (hex `#RRGGBB` / `#RGB`, `rgb()`, `rgba()`, `hsl()`, CSS color names, etc.). This modifier is global in scope and is intended to be used by tooling rather than rendered in text.
+- `.Color(color)`: Assigns a display color to the entity for graphical tools and visualizations (timelines, interaction graphs, highlights). The parameter is the color value and is normally provided as an invisible parameter (parentheses). Accepted formats follow standard CSS color definitions (hex `#RRGGBB` / `#RGB`, `rgb()`, `rgba()`, `hsl()`, CSS color names, etc.). This property is global in scope and is intended to be used by tooling rather than rendered in text.
   - Parameters:
     - `color` (string): Color value in a CSS-acceptable format. By convention this parameter is invisible (use parentheses) because it is not meant to appear in the final reader output.
   - Examples:
@@ -380,8 +380,8 @@ Example:
 
 ### Parameter imbrication and successive analysis
 
-Modifier parameters in MuseTag are themselves MuseTag text: they can contain other entities, modifiers, or annotations, with no limit on imbrication imposed by the language.  
-MuseTag analysis does not require deep recursive processing: each process (tool, extension, etc.) only handles the modifier it is responsible for, extracts what it needs from the parameter (often the first entity), and then the global analysis continues on the rest of the text, including inside parameters.
+Property parameters in MuseTag are themselves MuseTag text: they can contain other entities, properties, or annotations, with no limit on imbrication imposed by the language.  
+MuseTag analysis does not require deep recursive processing: each process (tool, extension, etc.) only handles the property it is responsible for, extracts what it needs from the parameter (often the first entity), and then the global analysis continues on the rest of the text, including inside parameters.
 
 **Hierarchical example:**
 ```musetag
@@ -399,15 +399,15 @@ MuseTag analysis does not require deep recursive processing: each process (tool,
   @@(Lestrade).Voice[--- Gentlemen, any progress? @@(Holmes).Comment[interrupting](Lestrade cuts in abruptly)]
 ]
 ```
-- The global analysis detects the `.Dialog` modifier and treats its parameter (the dialogue block) as MuseTag text, continuing analysis on each line.
-- Each `.Voice` is then processed, and any nested modifiers (such as `.Comment` inside a line) are also detected as the global analysis passes through.
+- The global analysis detects the `.Dialog` property and treats its parameter (the dialogue block) as MuseTag text, continuing analysis on each line.
+- Each `.Voice` is then processed, and any nested properties (such as `.Comment` inside a line) are also detected as the global analysis passes through.
 
 **Recommendation:**  
 The author is free to nest as much as desired, especially in multiline structures. Readability is the author's responsibility: MuseTag imposes no restriction on the depth or complexity of imbrication, as long as the syntax is valid.
 
-**Global modifier aggregation:**
-By default, global modifiers are cumulative: each occurrence adds information to the entity, rather than replacing previous values.
-Only modifiers explicitly defined as unique (such as `.Status` or `.Version`) replace previous values.
+**Global property aggregation:**
+By default, global properties are cumulative: each occurrence adds information to the entity, rather than replacing previous values.
+Only properties explicitly defined as unique (such as `.Status` or `.Version`) replace previous values.
 
 Example usage:
 ```musetag
@@ -418,38 +418,38 @@ Example usage:
 
 Invalid usage (will be ignored and remains in the final text):
 ```musetag
-@@Jules.Custom
+@@Jules.unknownProperty[text] becomes "Jules text"
 ```
 
-##### Standard Modifier Scope
-The scope of standard modifiers is determined by their semantic nature:
-- **Type Modifiers** (`.Type`, `.Character`, `.Place`, etc.): Global by default as they define the fundamental nature of entities
+##### Standard Property Scope
+The scope of standard properties is determined by their semantic nature:
+- **Type Properties** (`.Type`, `.Character`, `.Place`, etc.): Global by default as they define the fundamental nature of entities
 
-- **Status Modifiers** (`.Draft`, `.Final`): Local by default as they describe temporary states
+- **Status Properties** (`.Draft`, `.Final`): Local by default as they describe temporary states
 
-- **Point of View Modifiers** (`.Pov`): Local by default as they typically apply to specific scenes or chapters
+- **Point of View Properties** (`.Pov`): Local by default as they typically apply to specific scenes or chapters
 
-- **Version Modifiers** (`.Version`): Global by default as they apply to whole document sections
+- **Version Properties** (`.Version`): Global by default as they apply to whole document sections
 
-##### Overriding Standard Modifier Scope
-The default scope of any standard modifier can be explicitly overridden using scope indicators:
-- `.Modifier!` forces global scope
-- `.Modifier?` forces local scope
+##### Overriding Standard Property Scope
+The default scope of any standard property can be explicitly overridden using scope indicators:
+- `.Property!` forces global scope
+- `.Property?` forces local scope
 Examples:
 ```musetag
-@@Jules.Character     # Global by default (type modifier)
+@@Jules.Character     # Global by default (type property)
 @@Jules.Character?    # Forced local scope
-@@Jules.Pov          # Local by default (POV modifier)
+@@Jules.Pov          # Local by default (POV property)
 @@Jules.Pov!         # Forced global scope
 ```
 When using scope overrides:
-- The override applies only to the specific instance of the modifier
+- The override applies only to the specific instance of the property
 - The original semantic default remains unchanged for other uses
-- Scope overrides must immediately follow the modifier name
+- Scope overrides must immediately follow the property name
 #### Temporal Entities
-Temporal entities are a special type of entity that makes extensive use of standard modifiers to handle dates, times, and temporal relationships in your narrative. These entities are tightly integrated with the `.Type` modifier and its standard variants (`.Date`, `.Time`, `.DateTime`) to provide both implicit and explicit temporal typing.
+Temporal entities are a special type of entity that makes extensive use of standard properties to handle dates, times, and temporal relationships in your narrative. These entities are tightly integrated with the `.Type` property and its standard variants (`.Date`, `.Time`, `.DateTime`) to provide both implicit and explicit temporal typing.
 
-While temporal entities have their own specific syntax formats (described below), they are recognized and processed through the standard modifier system. This integration allows for:
+While temporal entities have their own specific syntax formats (described below), they are recognized and processed through the standard property system. This integration allows for:
 - Automatic type detection based on format (e.g., "2025-04-28" is recognized as a Date)
 - Explicit typing when needed (e.g., `@@(2025-04-28).Type(Date)`)
 - Consistent handling of temporal relationships and scopes
@@ -471,7 +471,7 @@ Shortened forms are allowed:
 @@(14:30)                # Time without timezone
 ```
 
-The `.Type` modifier (`Date`, `Time`, or `DateTime`) is optional for temporal entities as they are automatically recognized by their format.
+The `.Type` property (`Date`, `Time`, or `DateTime`) is optional for temporal entities as they are automatically recognized by their format.
 
 For dates before Common Era (BCE/BC), use the minus sign prefix following ISO 8601:
 ```musetag
@@ -559,19 +559,19 @@ Temporal entities can be combined with other MuseTag features for rich narrative
 ```musetag
 # Combining with characters and events
 @@(1815-06-18).Type(Date) @@(Napoleon).DESCRIPTION[destiny] faced his ultimate test at @@Waterloo.Place.
-# Using with nested annotations and modifiers
+# Using with nested annotations and properties
 @@(1789-07-14) The @@(Bastille).Type(Place) fell as @@Paris.excited erupted in revolution.
 # Timeline organization with multiple entities
 @@(@Y1) In the first year, @@(@M3) during the third month, @@Jules.tired struggled with @@Writer_Block, but by @@(@M6) summer @@(Jules) had @@.STATUS[finished the first draft].
 ```
 These examples show how temporal entities work seamlessly with:
-- Character entities and their modifiers
+- Character entities and their properties
 - Place entities and type annotations
 - Nested entity references
-- Local modifiers for narrative mood
+- Local properties for narrative mood
 - The null entity for contextual attributes
-### Application Specific Modifiers
-Applications can define their own modifiers using namespaces.
+### Application Specific Properties
+Applications can define their own properties using namespaces.
 #### Namespace Definition
 Application namespaces MUST:
 - Consist of ASCII letters only (a-z, A-Z) and digits (0-9)
@@ -585,28 +585,28 @@ Examples of valid namespaces:
 Invalid namespaces:
 - `Pip-App:` (contains hyphen)
 - `École:` (contains non-ASCII character)
-#### Modifier Syntax
-Application-specific modifiers are formed by:
+#### Property Syntax
+Application-specific properties are formed by:
 1. The registered namespace (including colon)
-2. The modifier name (can use any capitalization)
+2. The property name (can use any capitalization)
 Examples:
 ```musetag
-@@Jules.App:plot        # App application's plot modifier
-@@Marie.Writer:character   # Writer's companion character modifier
+@@Jules.App:plot        # App application's plot property
+@@Marie.Writer:character   # Writer's companion character property
 ```
 #### Scope Rules
-Application-specific modifiers follow the same scope rules as standard modifiers:
+Application-specific properties follow the same scope rules as standard properties:
 - Their default scope is determined by their documented semantic nature
-- Scope can be overridden using ! (global) and ? (local) modifiers
+- Scope can be overridden using ! (global) and ? (local) properties
 Example:
 ```musetag
 @@Jules.App:Plot        # Default scope (as documented by App)
 @@Jules.App:Plot!       # Forced global scope
 @@Jules.App:Plot?       # Forced local scope
 ```
-Applications MUST document the default scope of their modifiers in their documentation.
-#### Modifier Documentation Format
-Applications MUST document their modifiers using this standardized format:
+Applications MUST document the default scope of their properties in their documentation.
+#### Property Documentation Format
+Applications MUST document their properties using this standardized format:
 ```yaml
 namespace: ApplicationNamespace
 version: 1.0.0
@@ -621,10 +621,10 @@ publisher:
 maintainer:
   name: "Maintainer Name"
   contact: "maintainer@example.com"
-documentation: "https://docs.example.com/modifiers"  # Stable documentation URL
-modifiers:
-  - name: modifierName
-    description: Brief description of the modifier's purpose
+documentation: "https://docs.example.com/properties"  # Stable documentation URL
+properties:
+  - name: propertyName
+    description: Brief description of the property's purpose
     scope: [global|local]  # Default scope
     parameters:
       - name: paramName
@@ -632,15 +632,15 @@ modifiers:
         description: Parameter description
         values: [value1, value2]  # Optional: enumeration of valid values
     examples:
-      - code: "@@Entity.ApplicationName:modifierName"
+      - code: "@@Entity.ApplicationName:propertyName"
         description: "Basic usage example"
     notes: |
       Additional implementation notes or warnings
 ```
-This format is used by all modifiers documentation, including standard modifiers (see `namespaces/global.yaml`).
+This format is used by all properties documentation, including standard properties (see `namespaces/global.yaml`).
 #### Documentation Requirements
 - All registered namespaces MUST provide documentation in this format
-- All modifiers in the namespace MUST be documented
+- All properties in the namespace MUST be documented
 - Version numbers MUST follow semantic versioning
 - Breaking changes MUST increment the major version number
 #### Namespace Registration Process
@@ -666,29 +666,29 @@ Suggested contribution levels:
 - Large businesses (annual revenue over 1 million USD): 500+ USD
 All contributions are voluntary and have no impact on the registration process or timeline. The namespace registration will be processed with the same attention and priority regardless of whether a contribution is made.
 Contributing companies will be acknowledged (unless they prefer to remain anonymous) in our [SUPPORTERS.md](SUPPORTERS.md) file.
-#### Modifiers in Nested Annotations
-When using modifiers with nested annotations, there are specific rules for how they apply:
-1. **Local Scope**: Modifiers apply only to their directly associated entity, not to nested annotations:
+#### Properties in Nested Annotations
+When using properties with nested annotations, there are specific rules for how they apply:
+1. **Local Scope**: Properties apply only to their directly associated entity, not to nested annotations:
 ```musetag
 @@Jules.happy looked at @@(Marie).EXPRESSION[smiling].  # Only Jules is happy
 @@(Scene).dark @@Jules walked past @@Marie.    # Only the Scene is dark
 ```
-2. **Null Entity Exception**: Modifiers on the null entity affect the entire captured content, including nested annotations:
+2. **Null Entity Exception**: Properties on the null entity affect the entire captured content, including nested annotations:
 ```musetag
 @@.STYLE[This text] and @@(Jules).SPEECH[his words] are emphasized.
 @@.pov(Jules) @@(Marie).EXPRESSION[smiled] as @@(Jules) entered.  # All from Jules' POV
 ```
-3. **Cascading Effects**: While modifiers don't affect nested entities directly, tools can analyze the relationship between modifiers at different levels:
+3. **Cascading Effects**: While properties don't affect nested entities directly, tools can analyze the relationship between properties at different levels:
 ```musetag
 @@Scene.night[@@Jules.tired[met] @@Marie.worried[near the bridge]]
 # Tools can understand this is a night scene with tired and worried characters
 ```
 
-#### Modifier vs Punctuation
-To avoid ambiguity between modifiers and regular text, MuseTag follows specific rules for handling dots in the text:
-1. **Modifier Identification**:
-   A dot is considered a modifier separator if and only if:
-   - It immediately follows an entity name or another modifier
+#### Property vs Punctuation
+To avoid ambiguity between properties and regular text, MuseTag follows specific rules for handling dots in the text:
+1. **Property Identification**:
+   A dot is considered a property separator if and only if:
+   - It immediately follows an entity name or another property
    - It is immediately followed by an ASCII letter (a-z or A-Z)
 2. **Punctuation Treatment**:
    A dot is treated as regular punctuation when:
@@ -699,9 +699,9 @@ To avoid ambiguity between modifiers and regular text, MuseTag follows specific 
    - Part of sequences like ellipsis ("...")
 Examples:
 ```musetag
-# Valid modifiers
-@@Jules.happy(smiled)        # .happy is a modifier
-@@Jules.tired.sad           # Both .tired and .sad are modifiers
+# Valid properties
+@@Jules.happy(smiled)        # .happy is a property
+@@Jules.tired.sad           # Both .tired and .sad are properties
 # Treated as punctuation
 @@Jules.42(looked tired)     # .42 is regular text
 @@Jules.été[was hot]         # .été is regular text
@@ -715,9 +715,9 @@ This permissive approach ensures that:
 - No complex error handling is needed
 - Writers can use normal punctuation freely
 ### Null Entity
-While entities typically represent narrative elements (characters, places, events), there are cases where you want to apply modifiers or capture content without creating an actual entity. This is where the null entity `@@.` comes in.
+While entities typically represent narrative elements (characters, places, events), there are cases where you want to apply properties or capture content without creating an actual entity. This is where the null entity `@@.` comes in.
 The null entity is a special construct that:
-- Can take any type of modifier
+- Can take any type of property
 - Never appears in the final text
 - Doesn't create entity relationships
 - Is purely used for meta-information and processing instructions
@@ -743,7 +743,7 @@ Because it doesn't create actual entity relationships, the null entity is perfec
 @@.type(chapter)                      # Document structure (hidden)
 ```
 ### Annotation Scope
-MuseTag annotations follow specific scope rules depending on their placement and modifiers.
+MuseTag annotations follow specific scope rules depending on their placement and properties.
 #### File-level Annotations
 Annotations at the very beginning of a file (before any content) apply to the entire file:
 ```musetag
@@ -776,7 +776,7 @@ Normal narrative continues here without the flashback annotation.
 ```
 Tools processing these annotations should respect these scope rules when analyzing or transforming the text.
 ### Hidden Markdown Structures
-Combining the null entity and null local modifiers allows MuseTag to embed Markdown syntax that will be processed for analysis but won't appear in the final text:
+Combining the null entity and null local properties allows MuseTag to embed Markdown syntax that will be processed for analysis but won't appear in the final text:
 ```musetag
 @@.(# Hidden Title) This sentence has a hidden structural marker.
 Normal visible text continues here...
@@ -838,9 +838,9 @@ MuseTag follows a permissive approach to error handling:
 ```musetag
 @@Jules[unclosed bracket becomes "Jules[unclosed bracket"
 ```
-3. **Unknown Modifiers**: While there are no "invalid" modifiers syntactically, modifiers that are neither standard nor from a registered application namespace are simply removed during cleanup:
+3. **Unknown Properties**: While there are no "invalid" properties syntactically, properties that are neither standard nor from a registered application namespace are simply removed during cleanup:
 ```musetag
-@@Jules.unknownModifier[text] becomes "Jules text"
+@@Jules.unknownProperty[text] becomes "Jules text"
 ```
 This approach ensures that:
 - Writing flow is never interrupted
@@ -891,7 +891,7 @@ In this example:
 - Two character entities (Jules and Marie) are defined
 - Jules is visible in the text, Marie is hidden
 - A visible parameter (.STATUS[reading]) provides narrative content
-- A temporary state modifier (.happy) is applied to Jules as metadata
+- A temporary state property (.happy) is applied to Jules as metadata
 ### Rich Narrative Structure
 ```musetag
 # The Meeting @@.STATUS[Draft] @@.Version(0.2)
@@ -900,7 +900,7 @@ In this example:
 @@(Editor).Character.mood(critical) took a long look at @@(Jules).POSSESSIVE[his] work, @@(Editor).EXPRESSION[giving nothing away].
 ```
 This more complex example demonstrates:
-- Document-level modifiers with visible parameters (.STATUS[Draft])
+- Document-level properties with visible parameters (.STATUS[Draft])
 - Header-scoped annotations (Place and Date)
 - Point of view indicators (Jules.Pov)
 - Character and object typing
